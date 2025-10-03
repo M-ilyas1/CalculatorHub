@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 🔑 SEO Title -->
+  <title>
+    Calculator - Free Online Calculators: BMI, Loan EMI, Age, GST, GPA & More
+  </title>
+
+  <!-- 📄 Meta Description (Primary for Google SEO) -->
+  <meta
+    name="description"
+    content="Calculator - Free online calculators for BMI, Loan EMI, Age, GST, GPA, Percentage, Compound Interest & SEO ROI. Fast, accurate & mobile-friendly tools with dark mode."
+  />
+
+  <!-- 🏷️ Meta Keywords (not heavily used by Google but useful for other engines) -->
+  <meta
+    name="keywords"
+    content="free calculator, BMI calculator, loan EMI calculator, age calculator, GST calculator, GPA calculator, percentage calculator, compound interest, SEO ROI, online tools, math calculator, finance calculator"
+  />
+
+  <!-- 👤 Author -->
+  <meta name="author" content="Calculator" />
+
+  <!-- 🤖 Robots Instructions -->
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+
+  <!-- ✅ Google Site Verification -->
+  <meta name="google-site-verification" content="EB26h4p6nKWTDlctMQx3OXyujElCLODhYmB-UhmttTU" />
+
+  <!-- 🔗 Canonical URL -->
+  <link rel="canonical" href="https://calculator.vgram.net/" />
+
+  <!-- 📱 Mobile App Capable -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- 📊 Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Calculator - Free Online Calculators" />
+  <meta
+    property="og:description"
+    content="Use free online calculators: BMI, Loan EMI, Age, GST, GPA, Percentage, Compound Interest & more. Fast, accurate, and mobile-friendly."
+  />
+  <meta property="og:url" content="https://calculator.vgram.net/" />
+  <meta property="og:site_name" content="Calculator" />
+  <meta property="og:image" content="https://calculator.vgram.net/preview.png" />
+
+  <!-- 🐦 Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Calculator - Free Online Calculators" />
+  <meta
+    name="twitter:description"
+    content="Fast & free calculators for BMI, Loan EMI, Age, GST, GPA, Percentage, Compound Interest & more."
+  />
+  <meta name="twitter:image" content="https://calculator.vgram.net/preview.png" />
+
+  <!-- 🖼️ Favicon -->
+  <link rel="icon" href="/assets/calculator.webp" type="image/x-icon" />
+
+  <!-- 🎨 Tailwind CSS & Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#fff7ed",
+                100: "#ffedd5",
+                500: "#3b82f6", // Changed from orange to blue
+                600: "#2563eb",
+                700: "#1d4ed8",
+                900: "#1e3a8a",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              "bounce-slow": "bounce 3s infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-10px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+      * {
+        font-family: "Inter", sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #f0f9ff 0%,
+          #e0f2fe 50%,
+          #f0f9ff 100%
+        ); /* Blue theme */
+      }
+
+      [data-theme="dark"] .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 50%,
+          #0f172a 100%
+        );
+      }
+
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      .tool-panel {
+        transition: all 0.4s ease;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .tool-panel.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .theme-transition {
+        transition: background-color 0.3s ease, color 0.3s ease,
+          border-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          #3b82f6 0%,
+          #2563eb 100%
+        ); /* Blue theme */
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid #3b82f6; /* Blue theme */
+        color: #3b82f6;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: #3b82f6;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .floating-element {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        background: linear-gradient(
+          135deg,
+          #3b82f6 0%,
+          #2563eb 100%
+        ); /* Blue theme */
+        color: white;
+        font-size: 24px;
+      }
+
+      [data-theme="dark"] .feature-icon {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      }
+
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      [data-theme="dark"] .glass-effect {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .tool-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      input[type="date"],
+      select,
+      textarea {
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+
+      input[type="text"]:focus,
+      input[type="number"]:focus,
+      input[type="date"]:focus,
+      select:focus,
+      textarea:focus {
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Blue theme */
+        border-color: #3b82f6;
+      }
+
+      .mobile-menu {
+        transition: all 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .mobile-menu.open {
+        max-height: 500px;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .tool-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(59, 130, 246, 0.1); /* Blue theme */
+        color: #3b82f6;
+        font-size: 20px;
+      }
+
+      [data-theme="dark"] .tool-icon {
+        background: rgba(59, 130, 246, 0.2);
+      }
+
+      .result-card {
+        background: linear-gradient(
+          135deg,
+          #f0f9ff 0%,
+          #e0f2fe 100%
+        ); /* Blue theme */
+        border-left: 4px solid #3b82f6;
+      }
+
+      [data-theme="dark"] .result-card {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        border-left: 4px solid #2563eb;
+      }
+
+      /* Navigation fixes */
+      header {
+        height: auto !important;
+        min-height: 80px;
+      }
+
+      header .flex.items-center.justify-between {
+        min-height: 80px;
+        height: auto;
+        padding: 1rem 0;
+      }
+
+      /* Enhanced Dark Mode with Better Contrast */
+      [data-theme="dark"] {
+        --bg: #0f172a;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --card: #1e293b;
+        --border: #475569;
+        --input-bg: #334155;
+        --accent: #60a5fa;
+        color: #f8fafc;
+      }
+
+      [data-theme="dark"] .bg-white {
+        background: var(--card) !important;
+        color: var(--text) !important;
+        border-color: var(--border) !important;
+      }
+
+      [data-theme="dark"] .text-gray-700 {
+        color: var(--text) !important;
+      }
+
+      [data-theme="dark"] .text-gray-600 {
+        color: var(--muted) !important;
+      }
+
+      [data-theme="dark"] .text-gray-500 {
+        color: var(--muted) !important;
+      }
+
+      [data-theme="dark"] .text-gray-800 {
+        color: #f8fafc !important;
+      }
+
+      [data-theme="dark"] .border {
+        border-color: var(--border) !important;
+      }
+
+      [data-theme="dark"] input[type="text"],
+      [data-theme="dark"] input[type="number"],
+      [data-theme="dark"] input[type="date"],
+      [data-theme="dark"] select,
+      [data-theme="dark"] textarea {
+        background: var(--input-bg);
+        color: var(--text);
+        border: 1px solid var(--border);
+        caret-color: var(--accent);
+      }
+
+      [data-theme="dark"] header {
+        background: rgba(15, 23, 42, 0.8);
+      }
+
+      [data-theme="dark"] .stats-card {
+        background: var(--card);
+        color: var(--text);
+      }
+
+      /* Ensure all components are visible in dark mode */
+      [data-theme="dark"] .bg-gray-50 {
+        background-color: #334155 !important;
+        color: var(--text) !important;
+      }
+
+      [data-theme="dark"] .bg-gray-100 {
+        background-color: #475569 !important;
+      }
+
+      [data-theme="dark"] .shadow-lg {
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+      }
+
+      [data-theme="dark"] .border-gray-100,
+      [data-theme="dark"] .border-gray-200,
+      [data-theme="dark"] .border-gray-300 {
+        border-color: #475569 !important;
+      }
+
+      [data-theme="dark"] .hover\:bg-gray-50:hover {
+        background-color: #475569 !important;
+      }
+
+      /* Fix input placeholder color in dark mode */
+      [data-theme="dark"] ::placeholder {
+        color: #94a3b8 !important;
+      }
+
+      [data-theme="dark"] :-ms-input-placeholder {
+        color: #94a3b8 !important;
+      }
+
+      [data-theme="dark"] ::-ms-input-placeholder {
+        color: #94a3b8 !important;
+      }
+
+      /* Ensure all cards are properly visible */
+      [data-theme="dark"] .card-hover:hover {
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      /* Fix details/summary elements in dark mode */
+      [data-theme="dark"] details {
+        background: #1e293b !important;
+        color: #f8fafc !important;
+      }
+
+      [data-theme="dark"] summary {
+        color: #f8fafc !important;
+      }
+
+      [data-theme="dark"] summary span {
+        color: #60a5fa !important;
+      }
+
+      /* AdSense Container Styling */
+      .adsense-container {
+        margin: 2rem 0;
+        padding: 1rem;
+        background: rgba(59, 130, 246, 0.05);
+        border-radius: 12px;
+        border: 1px dashed #3b82f6;
+      }
+
+      [data-theme="dark"] .adsense-container {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: #2563eb;
+      }
+
+      /* Mobile responsiveness improvements */
+      @media (max-width: 768px) {
+        header .flex.items-center.justify-between {
+          min-height: 70px;
+          padding: 0.75rem 0;
+        }
+
+        .max-w-7xl.mx-auto.px-4.sm\:px-6.pt-10.pb-6 {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+
+        /* Ensure tool area is properly sized on mobile */
+        #toolArea {
+          min-height: 350px;
+        }
+
+        /* Better button sizing on mobile */
+        .btn-primary,
+        .btn-secondary {
+          padding: 0.75rem 1.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Prevent horizontal scrolling on mobile */
+      @media (max-width: 640px) {
+        body {
+          overflow-x: hidden;
+        }
+
+        .grid.grid-cols-1.xl\:grid-cols-2.gap-12.items-center.py-8 {
+          gap: 2rem;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="theme-transition gradient-bg" data-theme="light">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 glass-effect border-b py-2">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between min-h-[70px]">
+          <a href="#home" class="flex items-center gap-3">
+            <div class="relative">
+              <div
+                class="w-10 h-10 rounded-xl bg-primary-600 flex items-center justify-center text-white font-bold shadow-lg"
+              >
+                CH
+              </div>
+              <div
+                class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"
+              ></div>
+            </div>
+            <div>
+              <!-- Updated to Calculator -->
+              <span
+                class="font-bold text-xl bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent"
+                >Calculator Hub</span
+              >
+              <span class="block text-xs text-primary-600 font-medium"
+                >Fast & Accurate</span
+              >
+            </div>
+          </a>
+
+          <nav class="hidden lg:flex items-center gap-8 font-medium">
+            <a
+              href="#home"
+              class="text-primary-600 font-semibold flex items-center gap-1"
+            >
+              <i class="fas fa-home text-sm"></i>
+              Home
+            </a>
+            <a
+              href="#tools"
+              class="text-gray-700 hover:text-primary-600 transition-colors duration-300"
+              >All Tools</a
+            >
+            <a
+              href="#features"
+              class="text-gray-700 hover:text-primary-600 transition-colors duration-300"
+              >Features</a
+            >
+            <a
+              href="#faq"
+              class="text-gray-700 hover:text-primary-600 transition-colors duration-300"
+              >FAQ</a
+            >
+            <a
+              href="#about"
+              class="text-gray-700 hover:text-primary-600 transition-colors duration-300"
+              >About</a
+            >
+          </nav>
+
+          <div class="flex items-center gap-4">
+            <button
+              id="themeToggle"
+              aria-label="Toggle theme"
+              class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+              title="Toggle theme"
+            >
+              <i id="themeIcon" class="fas fa-sun text-primary-600"></i>
+            </button>
+
+            <div class="lg:hidden">
+              <button
+                id="menuBtn"
+                class="p-2 rounded-lg hover:bg-gray-100 transition-colors duration-300"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+              >
+                <i class="fas fa-bars text-primary-600 text-xl"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="mobile-menu lg:hidden border-t glass-effect">
+        <div class="px-4 py-6 flex flex-col gap-4">
+          <a
+            href="#home"
+            class="flex items-center gap-3 py-2 text-primary-600 font-semibold"
+          >
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+          <a
+            href="#tools"
+            class="flex items-center gap-3 py-2 text-gray-700 hover:text-primary-600 transition-colors duration-300"
+          >
+            <i class="fas fa-tools"></i>
+            All Tools
+          </a>
+          <a
+            href="#features"
+            class="flex items-center gap-3 py-2 text-gray-700 hover:text-primary-600 transition-colors duration-300"
+          >
+            <i class="fas fa-star"></i>
+            Features
+          </a>
+          <a
+            href="#faq"
+            class="flex items-center gap-3 py-2 text-gray-700 hover:text-primary-600 transition-colors duration-300"
+          >
+            <i class="fas fa-question-circle"></i>
+            FAQ
+          </a>
+          <a
+            href="#about"
+            class="flex items-center gap-3 py-2 text-gray-700 hover:text-primary-600 transition-colors duration-300"
+          >
+            <i class="fas fa-info-circle"></i>
+            About
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main id="home" class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-6">
+      <section class="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center py-8">
+        <div class="relative">
+          <div
+            class="absolute -top-10 -left-10 w-20 h-20 bg-blue-200 rounded-full opacity-50 floating-element"
+          ></div>
+          <div
+            class="absolute -bottom-10 -right-10 w-16 h-16 bg-primary-200 rounded-full opacity-50 floating-element"
+            style="animation-delay: 2s"
+          ></div>
+
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            <!-- Updated to Calculator -->
+            <span
+              class="bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent"
+              >Calculator Hub</span
+            >
+            <br />
+            <span class="text-gray-800"
+              >Smart Calculators <br />
+              For Everyday Use</span
+            >
+          </h1>
+          <p class="mt-6 text-lg text-gray-600 max-w-lg">
+            Free Online Calculators: Instantly calculate BMI, loan EMI, compound
+            interest, GPA, and more. 100% accurate, mobile-friendly. No sign-up
+            or installation required.
+          </p>
+
+          <div class="mt-8 flex gap-4 flex-wrap">
+            <a
+              href="#tools"
+              class="btn-primary text-white px-6 py-3 rounded-xl font-medium shadow-lg"
+            >
+              <i class="fas fa-rocket mr-2"></i>
+              Explore Tools
+            </a>
+            <a
+              href="#features"
+              class="btn-secondary px-6 py-3 rounded-xl font-medium"
+            >
+              <i class="fas fa-play-circle mr-2"></i>
+              See Demo
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center gap-8">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600"
+              >
+                <i class="fas fa-check"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">100% Free</div>
+                <div class="text-sm text-gray-600">No hidden costs</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600"
+              >
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div>
+                <div class="font-bold text-gray-800">Fast</div>
+                <div class="text-sm text-gray-600">Instant results</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Hub - Updated with Calculator -->
+        <div class="relative">
+          <div
+            class="glass-effect rounded-2xl shadow-xl p-6 border border-white/50"
+          >
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4"
+            >
+              <div class="text-center sm:text-left">
+                <!-- Updated to Calculator -->
+                <p>
+                  <span
+                    id="currentToolName"
+                    class="text-primary-600 text-lg sm:text-xl font-bold text-gray-800"
+                    >BMI Calculator</span
+                  >
+                </p>
+              </div>
+              <div class="relative w-full sm:w-auto">
+                <select
+                  id="toolSelect"
+                  class="w-full border rounded-xl px-4 py-2 text-sm bg-white appearance-none pr-10 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  aria-label="Select tool"
+                >
+                  <option value="bmi">BMI Calculator</option>
+                  <option value="loan">Loan EMI Calculator</option>
+                  <option value="age">Age Calculator</option>
+                  <option value="gst">GST Calculator</option>
+                  <option value="gpa">GPA Calculator</option>
+                  <option value="percentage">Percentage Calculator</option>
+                  <option value="compound">Compound Interest</option>
+                  <option value="roi">SEO ROI Calculator</option>
+                </select>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                >
+                  <i class="fas fa-chevron-down text-sm"></i>
+                </div>
+              </div>
+            </div>
+
+            <div id="toolArea" class="relative min-h-[400px]">
+              <!-- BMI Calculator Panel -->
+              <div data-tool="bmi" class="tool-panel space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Height (cm)</label
+                  >
+                  <input
+                    id="bmiHeight"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 170"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Weight (kg)</label
+                  >
+                  <input
+                    id="bmiWeight"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 72"
+                  />
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <!-- Calculate button -->
+                  <button
+                    id="bmiCalcBtn"
+                    class="w-full sm:flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate BMI
+                  </button>
+
+                  <!-- Action buttons -->
+                  <div class="flex gap-3 justify-center sm:justify-start">
+                    <button
+                      data-copy
+                      data-target="#bmiResult"
+                      class="flex-1 sm:flex-none px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                      title="Copy result"
+                    >
+                      <i class="fas fa-copy"></i>
+                      <span class="sm:sr-only">Copy</span>
+                    </button>
+                    <button
+                      data-share
+                      data-target="#bmiResult"
+                      class="flex-1 sm:flex-none px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                      title="Share result"
+                    >
+                      <i class="fas fa-share-alt"></i>
+                      <span class="sm:sr-only">Share</span>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  id="bmiResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>Formula:</strong> BMI = weight(kg) / (height(m))².
+                  <strong>Categories:</strong> &lt;18.5 Underweight · 18.5–24.9
+                  Normal · 25–29.9 Overweight · ≥30 Obese.
+                </div>
+              </div>
+
+              <!-- Other calculator panels remain the same but with improved dark mode visibility -->
+              <!-- Loan Calculator Panel -->
+              <div data-tool="loan" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Loan Amount</label
+                  >
+                  <input
+                    id="loanAmount"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 1000000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Interest Rate (annual %)</label
+                  >
+                  <input
+                    id="loanRate"
+                    type="number"
+                    step="0.01"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 7.5"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Tenure (years)</label
+                  >
+                  <input
+                    id="loanTenure"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 5"
+                  />
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="loanCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate EMI
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#loanResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#loanResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="loanResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>EMI formula:</strong> EMI = [P × r × (1+r)^n] /
+                  [(1+r)^n – 1], where r = monthly rate.
+                </div>
+              </div>
+
+              <!-- Age Calculator Panel -->
+              <div data-tool="age" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Date of Birth</label
+                  >
+                  <input
+                    id="dob"
+                    type="date"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  />
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="ageCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate Age
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#ageResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#ageResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="ageResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  Useful for forms, verification, and eligibility checks.
+                </div>
+              </div>
+
+              <!-- GST Calculator Panel -->
+              <div data-tool="gst" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Amount (before tax)</label
+                  >
+                  <input
+                    id="gstAmount"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 1000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >GST Rate (%)</label
+                  >
+                  <input
+                    id="gstRate"
+                    type="number"
+                    step="0.01"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 18"
+                  />
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="gstCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate GST
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#gstResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#gstResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="gstResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  Calculate tax and total payable. Good for invoices.
+                </div>
+              </div>
+
+              <!-- GPA Calculator Panel -->
+              <div data-tool="gpa" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Enter grades and credits</label
+                  >
+                  <textarea
+                    id="gpaInput"
+                    rows="4"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. A,3; B+,3; A-,4"
+                  ></textarea>
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="gpaCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate GPA
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#gpaResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#gpaResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="gpaResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>Format:</strong> grade,credit; grade,credit. Supports
+                  common letter grades A/A-/B+/B etc.
+                </div>
+              </div>
+
+              <!-- Percentage Calculator Panel -->
+              <div data-tool="percentage" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Starting Value</label
+                  >
+                  <input
+                    id="percentStart"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 100"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Final Value</label
+                  >
+                  <input
+                    id="percentFinal"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 125"
+                  />
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="percentCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate Percentage
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#percentResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#percentResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="percentResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>Formula:</strong> Percentage Increase = [(Final Value
+                  - Starting Value) / |Starting Value|] × 100
+                </div>
+              </div>
+
+              <!-- Compound Interest Calculator Panel -->
+              <div data-tool="compound" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Principal Amount</label
+                  >
+                  <input
+                    id="principalAmount"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 10000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Annual Interest Rate (%)</label
+                  >
+                  <input
+                    id="interestRate"
+                    type="number"
+                    step="0.01"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 5"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Time (years)</label
+                  >
+                  <input
+                    id="timeYears"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 10"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Compound Frequency</label
+                  >
+                  <select
+                    id="compoundFrequency"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  >
+                    <option value="1">Annually</option>
+                    <option value="2">Semi-Annually</option>
+                    <option value="4">Quarterly</option>
+                    <option value="12">Monthly</option>
+                    <option value="365">Daily</option>
+                  </select>
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="compoundCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#compoundResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#compoundResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="compoundResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>Formula:</strong> A = P(1 + r/n)^(nt) where A = final
+                  amount, P = principal, r = annual rate, n = compound
+                  frequency, t = years.
+                </div>
+              </div>
+
+              <!-- SEO ROI Calculator Panel -->
+              <div data-tool="roi" class="tool-panel hidden space-y-5">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >SEO Revenue ($)</label
+                  >
+                  <input
+                    id="seoRevenue"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 5000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >SEO Costs ($)</label
+                  >
+                  <input
+                    id="seoCosts"
+                    type="number"
+                    class="w-full border rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="e.g. 2000"
+                  />
+                </div>
+                <div class="flex gap-3">
+                  <button
+                    id="roiCalcBtn"
+                    class="flex-1 btn-primary text-white py-3 rounded-xl font-medium"
+                  >
+                    <i class="fas fa-calculator mr-2"></i>
+                    Calculate ROI
+                  </button>
+                  <button
+                    data-copy
+                    data-target="#roiResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Copy result"
+                  >
+                    <i class="fas fa-copy"></i>
+                  </button>
+                  <button
+                    data-share
+                    data-target="#roiResult"
+                    class="px-4 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors duration-300"
+                    title="Share result"
+                  >
+                    <i class="fas fa-share-alt"></i>
+                  </button>
+                </div>
+                <div
+                  id="roiResult"
+                  class="mt-4 p-4 rounded-xl result-card hidden"
+                  aria-live="polite"
+                ></div>
+                <div
+                  class="mt-3 text-xs text-gray-500 bg-gray-50 p-3 rounded-lg"
+                >
+                  <strong>Formula:</strong> SEO ROI = (SEO Revenue - SEO Costs)
+                  / SEO Costs × 100. Over 53% of website traffic comes from
+                  organic search.
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-6 border-t border-gray-200">
+              <h4 class="text-sm font-medium text-gray-700 mb-3">
+                Recent Calculations
+              </h4>
+              <div id="historyList" class="space-y-2"></div>
+              <div class="mt-3 text-xs text-gray-500">
+                Saved locally in your browser (last 10 items).
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating elements for visual appeal -->
+          <div
+            class="absolute -top-4 -right-4 w-8 h-8 bg-primary-500 rounded-full opacity-20 floating-element"
+            style="animation-delay: 1s"
+          ></div>
+          <div
+            class="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-400 rounded-full opacity-30 floating-element"
+            style="animation-delay: 3s"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="mt-20 py-12">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-800">
+            Why Choose Calculator Hub?
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            We've designed our tools with users in mind, focusing on speed,
+            accuracy, and ease of use.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="bg-white rounded-2xl p-6 shadow-lg card-hover border border-gray-100"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center mb-3">
+              Lightning Fast
+            </h3>
+            <p class="text-gray-600 text-center">
+              Get instant results without any delays. Our calculators process
+              data in milliseconds.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 shadow-lg card-hover border border-gray-100"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center mb-3">
+              Mobile Friendly
+            </h3>
+            <p class="text-gray-600 text-center">
+              Works perfectly on all devices - smartphones, tablets, and
+              desktops.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 shadow-lg card-hover border border-gray-100"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center mb-3">
+              Privacy First
+            </h3>
+            <p class="text-gray-600 text-center">
+              All calculations happen in your browser. We don't store any of
+              your data.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-6 shadow-lg card-hover border border-gray-100"
+          >
+            <div class="feature-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 text-center mb-3">
+              Dark Mode
+            </h3>
+            <p class="text-gray-600 text-center">
+              Easy on the eyes with our dark mode option. Automatically adapts
+              to your system preference.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLS GRID -->
+      <section id="tools" class="mt-20">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">All Calculator Tools</h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Click any tool to focus and open it inside Calculator.
+          </p>
+        </div>
+
+        <!-- 2x2 layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="cardsContainer">
+          <!-- template: each card is bigger -->
+          <template id="cardTpl">
+            <article
+              class="bg-white rounded-2xl shadow-lg p-8 card-hover border border-gray-100 tool-card"
+            >
+              <div class="card-top">
+                <div class="flex justify-between items-start mb-4">
+                  <div class="tool-icon">
+                    <i class="{{icon}}"></i>
+                  </div>
+                  <button
+                    class="openToolBtn btn-primary text-white px-5 py-2.5 rounded-xl text-sm font-medium"
+                    data-tool="{{tool}}"
+                  >
+                    Open
+                  </button>
+                </div>
+                <div>
+                  <h3 class="font-bold text-xl text-gray-800 mb-3">
+                    {{title}}
+                  </h3>
+                  <p class="text-gray-600">{{desc}}</p>
+                </div>
+              </div>
+              <div
+                class="card-bottom text-sm text-gray-700 mt-4 pt-4 border-t border-gray-100"
+              >
+                {{more}}
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+
+      <!-- AdSense Bottom Ad -->
+      <!-- <div class="adsense-container text-center my-12"></div> -->
+
+      <!-- FAQ Section -->
+      <section id="faq" class="mt-20 py-12">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">
+            Frequently Asked Questions
+          </h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Find instant answers to your most common questions about our free
+            online calculators.
+          </p>
+        </div>
+
+        <div class="mx-auto space-y-4">
+          <!-- Q1 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate percentage?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Use our free percentage calculator to easily find percentage
+              increases, decreases, or differences. Just enter your numbers, and
+              it does the math for you instantly.
+            </p>
+          </details>
+
+          <!-- Q2 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate BMI?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Our BMI calculator uses the standard formula: weight (kg) /
+              (height (m))². Enter your height and weight for a quick health
+              check and to see which category you fall into.
+            </p>
+          </details>
+
+          <!-- Q3 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate loan EMI?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Calculate your monthly Equated Monthly Installment (EMI) for home,
+              car, or personal loans in seconds. Input your loan amount,
+              interest rate, and tenure to plan your budget.
+            </p>
+          </details>
+
+          <!-- Q4 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate compound interest?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              See how your investments grow over time with our compound interest
+              calculator. It's a powerful tool for long-term financial planning
+              for savings and investments.
+            </p>
+          </details>
+
+          <!-- Q5 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate GPA?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Compute your weighted Grade Point Average (GPA) easily. Enter your
+              grades and credits for each course, and our calculator will do the
+              rest.
+            </p>
+          </details>
+
+          <!-- Q6 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate GST or tax?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Quickly figure out the tax amount and total payable for invoices
+              or purchases. Our tax calculator is helpful for businesses and
+              individuals for quick financial checks.
+            </p>
+          </details>
+
+          <!-- Q7 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>How to calculate my exact age?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              Find your exact age in years, months, and days with our age
+              calculator. It's useful for official forms, visa applications, and
+              eligibility checks.
+            </p>
+          </details>
+
+          <!-- Q8 -->
+          <details
+            class="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <summary
+              class="font-semibold cursor-pointer flex justify-between items-center text-gray-800"
+            >
+              <span>Is my calculation history saved?</span>
+              <span
+                class="transition-transform duration-300 group-open:rotate-45 text-primary-600"
+              >
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <p
+              class="mt-4 text-gray-600 transition-all duration-500 ease-in-out"
+            >
+              For your convenience, your last 10 calculations per tool are
+              stored locally in your browser's storage. Your data never leaves
+              your device and is private to you.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="mt-20 py-10">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800">About Calculator Hub</h2>
+          <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            Your go-to destination for fast, accurate, and free online
+            calculators.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Calculator Hub</h2>
+          <p class="text-gray-600 mb-6">
+            Discover the web's most convenient universal calculator hub, your
+            one-stop solution for dozens of free online tools . We provide
+            accurate calculations for everything from health (BMI calculator)
+            and finance (loan EMI calculator, compound interest calculator) to
+            academic (GPA calculator) and everyday math (percentage calculator).
+            <br />
+            <br />
+            Our tools are built for everyone. Key features like calculation
+            history (saved via local storage) and share results functionality
+            make it easy to track and discuss your outcomes. With a fully
+            responsive design, our calculators work perfectly on your desktop,
+            tablet, or phone.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2">Key Features</h3>
+              <ul class="text-gray-600 space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Share your calculated result with your love one</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Calculation history with local storage</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Copy and share functionality</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Fully responsive design</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="mt-20 py-12 text-center">
+        <div class="max-w-4xl mx-auto">
+          <div class="flex justify-center mb-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-primary-600 flex items-center justify-center text-white font-bold shadow-lg"
+            >
+              CH
+            </div>
+          </div>
+          <!-- Updated to Calculator -->
+          <h3 class="text-2xl font-bold text-gray-800 mb-4">Calculator Hub</h3>
+          <p class="text-gray-600 max-w-2xl mx-auto mb-8">
+            Your go-to destination for fast, accurate, and free online
+            calculators. We're committed to providing tools that are both
+            powerful and easy to use.
+          </p>
+          <div class="flex justify-center space-x-6 mb-8">
+            <a
+              href="#"
+              class="text-gray-500 hover:text-primary-600 transition-colors duration-300"
+            >
+              <i class="fab fa-twitter text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-primary-600 transition-colors duration-300"
+            >
+              <i class="fab fa-facebook text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-primary-600 transition-colors duration-300"
+            >
+              <i class="fab fa-github text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-500 hover:text-primary-600 transition-colors duration-300"
+            >
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+          </div>
+          <div class="text-sm text-gray-500">
+            &copy; <span id="year"></span> Calculator • Built with precision and
+            care
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JS -->
+    <script>
+      // helpers
+      const $ = (s, root = document) => root.querySelector(s);
+      const $$ = (s, root = document) => [...root.querySelectorAll(s)];
+
+      // Mobile menu - Fixed version
+      const menuBtn = $("#menuBtn");
+      const mobileMenu = $("#mobileMenu");
+
+      menuBtn?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (!mobileMenu) return;
+
+        mobileMenu.classList.toggle("open");
+        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+        menuBtn.setAttribute("aria-expanded", (!expanded).toString());
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!menuBtn || !mobileMenu) return;
+
+        const isMenuClick = mobileMenu.contains(e.target);
+        const isMenuBtnClick = menuBtn.contains(e.target);
+
+        if (
+          !isMenuClick &&
+          !isMenuBtnClick &&
+          mobileMenu.classList.contains("open")
+        ) {
+          mobileMenu.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Close mobile menu when clicking a link
+      $$("#mobileMenu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          menuBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // Theme toggle & icon
+      const themeToggle = $("#themeToggle");
+      const themeIcon = $("#themeIcon");
+
+      function renderThemeIcon(t) {
+        if (!themeIcon) return;
+        if (t === "dark") {
+          themeIcon.className = "fas fa-moon text-primary-600";
+        } else {
+          themeIcon.className = "fas fa-sun text-primary-600";
+        }
+      }
+
+      function setTheme(t) {
+        document.body.setAttribute("data-theme", t);
+        localStorage.setItem("ct_theme", t);
+        renderThemeIcon(t);
+      }
+
+      const savedTheme =
+        localStorage.getItem("ct_theme") ||
+        (window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      setTheme(savedTheme);
+
+      themeToggle?.addEventListener("click", () => {
+        const current =
+          document.body.getAttribute("data-theme") === "dark"
+            ? "dark"
+            : "light";
+        setTheme(current === "dark" ? "light" : "dark");
+      });
+
+      // Tools logic (switching)
+      const toolSelect = $("#toolSelect");
+      const toolPanels = $$(".tool-panel");
+      const currentToolName = $("#currentToolName");
+
+      // Tool name mapping
+      const toolNames = {
+        bmi: "BMI Calculator",
+        loan: "Loan EMI Calculator",
+        age: "Age Calculator",
+        gst: "GST Calculator",
+        gpa: "GPA Calculator",
+        percentage: "Percentage Calculator",
+        compound: "Compound Interest Calculator",
+        roi: "SEO ROI Calculator",
+      };
+
+      function showTool(name) {
+        if (!name) return;
+        toolPanels.forEach((p) => p.classList.add("hidden"));
+        const el = document.querySelector('[data-tool="' + name + '"]');
+        if (!el) return;
+        el.classList.remove("hidden");
+        if (toolSelect) toolSelect.value = name;
+        if (currentToolName)
+          currentToolName.textContent = toolNames[name] || "Calculator";
+        setTimeout(() => {
+          const focus = el.querySelector("input,textarea,select,button");
+          if (focus) focus.focus();
+        }, 120);
+      }
+      toolSelect?.addEventListener("change", (e) => showTool(e.target.value));
+
+      // Cards data -> render (cards are now equal height)
+      const cards = [
+        {
+          title: "BMI Calculator",
+          desc: "Free BMI Calculator: Check your body mass index instantly. Understand if you are underweight, normal weight, overweight, or obese. A quick health check tool for adults using standard BMI formula",
+          tool: "bmi",
+          icon: "fas fa-weight",
+          more: "Formula: BMI = weight(kg) / (height(m))². Good for quick health checks.",
+        },
+        {
+          title: "Loan / EMI",
+          desc: "Free EMI Calculator: Compute your exact monthly installment for home loans, car loans, or personal loans. Plan your finances with our easy-to-use loan calculator and amortization schedule",
+          tool: "loan",
+          icon: "fas fa-hand-holding-usd",
+          more: "Finance calculators often have higher ad CPC.",
+        },
+        {
+          title: "Age Calculator",
+          desc: "Age Calculator Online: Find your exact age in years, months, and days. Perfect for filling out official forms, checking visa eligibility, or just for curiosity. Fast and accurate results",
+          tool: "age",
+          icon: "fas fa-birthday-cake",
+          more: "Useful for forms, visa and eligibility checks.",
+        },
+        {
+          title: "GST / Tax",
+          desc: "GST Calculator Online: Quickly calculate Goods and Services Tax (GST) amount and total payable. Handles both inclusive and exclusive tax calculations—ideal for invoices and business finance checks",
+          tool: "gst",
+          icon: "fas fa-receipt",
+          more: "Helpful for invoices and quick tax checks.",
+        },
+        {
+          title: "GPA Calculator",
+          desc: "Free GPA Calculator: Compute your Grade Point Average (GPA) online. Enter your grades and credits to get your weighted GPA instantly. Essential for high school and university students",
+          tool: "gpa",
+          icon: "fas fa-graduation-cap",
+          more: "Supports common letter grades with credits.",
+        },
+        {
+          title: "Percentage Calculator",
+          desc: "Percentage Calculator: Easily calculate percentage increase, decrease, or difference between two numbers. A must-have tool for financial analysis, discounts, and math problems.",
+          tool: "percentage",
+          icon: "fas fa-percentage",
+          more: "Essential for financial analysis and growth tracking.",
+        },
+        {
+          title: "Compound Interest",
+          desc: "Free Compound Interest Calculator: See how your savings or investments grow over time. Understand the power of compounding with our easy-to-use online tool. Plan for long-term goals like retirement and calculate your potential future value.",
+          tool: "compound",
+          icon: "fas fa-chart-line",
+          more: "Powerful for long-term financial planning.",
+        },
+        {
+          title: "SEO ROI Calculator",
+          desc: "SEO ROI Calculator: Measure the return on investment of your Search Engine Optimization efforts. Over 53% of all website traffic comes from organic search. Use this tool to project revenue growth and justify your marketing budget.",
+          tool: "roi",
+          icon: "fas fa-search-dollar",
+          more: "Over 53% of website traffic comes from organic search.",
+        },
+      ];
+      const cardsContainer = $("#cardsContainer");
+      const tpl = $("#cardTpl").innerHTML;
+      cards.forEach((c) => {
+        const html = tpl
+          .replace("{{title}}", c.title)
+          .replace("{{desc}}", c.desc)
+          .replace(/{{tool}}/g, c.tool)
+          .replace("{{icon}}", c.icon)
+          .replace("{{more}}", c.more);
+        const div = document.createElement("div");
+        div.innerHTML = html;
+        cardsContainer.appendChild(div.firstElementChild);
+      });
+
+      // open tool from cards (delegated)
+      document.addEventListener("click", (e) => {
+        const openBtn = e.target.closest(".openToolBtn");
+        if (openBtn) {
+          const tool = openBtn.getAttribute("data-tool");
+          showTool(tool);
+          const el = document.querySelector('[data-tool="' + tool + '"]');
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+      });
+
+      // History (localStorage)
+      const HISTORY_KEY = "ct_history_v1";
+      function loadHistory() {
+        try {
+          return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+        } catch (e) {
+          return [];
+        }
+      }
+      function saveHistory(hist) {
+        localStorage.setItem(HISTORY_KEY, JSON.stringify(hist.slice(0, 10)));
+        renderHistory();
+      }
+      function addHistory(item) {
+        const h = loadHistory();
+        h.unshift(item);
+        saveHistory(h);
+      }
+      function renderHistory() {
+        const list = $("#historyList");
+        list.innerHTML = "";
+        const h = loadHistory();
+        if (!h.length) {
+          list.innerHTML =
+            '<div class="text-gray-500 text-sm py-2 text-center">No recent calculations yet.</div>';
+          return;
+        }
+        h.forEach((it, idx) => {
+          const node = document.createElement("div");
+          node.className =
+            "flex items-center justify-between gap-2 py-2 px-3 bg-gray-50 rounded-lg";
+          node.innerHTML = `<div class="truncate text-sm"><span class="font-medium">${it.title}:</span> <span class="text-primary-600">${it.result}</span></div>
+          <div class="flex gap-1">
+            <button data-replay data-idx="${idx}" class="px-2 py-1 text-xs bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-300" title="Use this calculation">Use</button>
+            <button data-delete data-idx="${idx}" class="px-2 py-1 text-xs bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-300" title="Delete">Del</button>
+          </div>`;
+          list.appendChild(node);
+        });
+      }
+
+      // Delegated handler: delete/replay/copy/share
+      document.addEventListener("click", async (e) => {
+        const del = e.target.closest("[data-delete]");
+        if (del) {
+          const idx = Number(del.getAttribute("data-idx"));
+          const h = loadHistory();
+          h.splice(idx, 1);
+          saveHistory(h);
+          return;
+        }
+
+        const rep = e.target.closest("[data-replay]");
+        if (rep) {
+          const idx = Number(rep.getAttribute("data-idx"));
+          const h = loadHistory();
+          const item = h[idx];
+          if (!item) return;
+          showTool(item.tool);
+          if (item.payload)
+            for (const k in item.payload) {
+              const inp = document.getElementById(k);
+              if (inp) inp.value = item.payload[k];
+            }
+          const el = document.querySelector('[data-tool="' + item.tool + '"]');
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+
+        const copyBtn = e.target.closest("[data-copy]");
+        if (copyBtn) {
+          const selector = copyBtn.getAttribute("data-target");
+          const target = document.querySelector(selector);
+          if (!target) {
+            showNotification("Result not found", "error");
+            return;
+          }
+          const text = (target.innerText || target.textContent || "").trim();
+          try {
+            await navigator.clipboard.writeText(text);
+            showNotification("Copied to clipboard", "success");
+          } catch (err) {
+            showNotification("Copy failed", "error");
+          }
+          return;
+        }
+
+        const shareBtn = e.target.closest("[data-share]");
+        if (shareBtn) {
+          const selector = shareBtn.getAttribute("data-target");
+          const target = document.querySelector(selector);
+          if (!target) {
+            showNotification("Result not found", "error");
+            return;
+          }
+          const text = (target.innerText || target.textContent || "").trim();
+          if (navigator.share) {
+            navigator
+              .share({ title: "Calculation result", text })
+              .catch(() => {});
+          } else {
+            try {
+              await navigator.clipboard.writeText(text);
+              showNotification("Result copied — share it anywhere", "success");
+            } catch (e) {
+              showNotification("Share not available", "error");
+            }
+          }
+          return;
+        }
+      });
+
+      // Notification function
+      function showNotification(message, type) {
+        // Remove existing notification
+        const existingNotification = document.getElementById("notification");
+        if (existingNotification) {
+          existingNotification.remove();
+        }
+
+        const notification = document.createElement("div");
+        notification.id = "notification";
+        notification.className = `fixed top-4 right-4 px-4 py-3 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-x-0 ${
+          type === "success"
+            ? "bg-green-500 text-white"
+            : "bg-red-500 text-white"
+        }`;
+        notification.textContent = message;
+
+        document.body.appendChild(notification);
+
+        // Auto remove after 3 seconds
+        setTimeout(() => {
+          notification.style.transform = "translateX(100%)";
+          setTimeout(() => {
+            if (notification.parentNode) {
+              notification.parentNode.removeChild(notification);
+            }
+          }, 300);
+        }, 3000);
+      }
+
+      // Calculators
+      $("#bmiCalcBtn").addEventListener("click", () => {
+        const h = parseFloat($("#bmiHeight").value);
+        const w = parseFloat($("#bmiWeight").value);
+        const out = $("#bmiResult");
+        if (!h || !w) {
+          out.textContent = "Please provide height and weight.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const m = h / 100;
+        const bmi = w / (m * m);
+        const rounded = bmi.toFixed(1);
+        let cat = "";
+        if (bmi < 18.5) cat = "Underweight";
+        else if (bmi < 25) cat = "Normal";
+        else if (bmi < 30) cat = "Overweight";
+        else cat = "Obese";
+        const res = `${rounded} — ${cat}`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "bmi",
+          title: "BMI",
+          result: res,
+          payload: { bmiHeight: h, bmiWeight: w },
+          date: new Date().toISOString(),
+        });
+      });
+
+      $("#loanCalcBtn").addEventListener("click", () => {
+        const P = parseFloat($("#loanAmount").value);
+        const annual = parseFloat($("#loanRate").value);
+        const years = parseFloat($("#loanTenure").value);
+        const out = $("#loanResult");
+        if (!P || !annual || !years) {
+          out.textContent = "Please provide amount, rate and tenure.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const r = annual / 100 / 12;
+        const n = years * 12;
+        const numerator = P * r * Math.pow(1 + r, n);
+        const denominator = Math.pow(1 + r, n) - 1;
+        if (denominator === 0) {
+          out.textContent = "Invalid inputs.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const emi = numerator / denominator;
+        const total = emi * n;
+        const interest = total - P;
+        const res = `EMI: ₹${emi.toFixed(2)} / month — Total: ₹${total.toFixed(
+          2
+        )} (Interest: ₹${interest.toFixed(2)})`;
+        out.innerHTML = `<p><strong class="text-lg">${res}</strong></p>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "loan",
+          title: "Loan EMI",
+          result: res,
+          payload: { loanAmount: P, loanRate: annual, loanTenure: years },
+          date: new Date().toISOString(),
+        });
+      });
+
+      $("#ageCalcBtn").addEventListener("click", () => {
+        const dobVal = $("#dob").value;
+        const out = $("#ageResult");
+        if (!dobVal) {
+          out.textContent = "Please pick a date of birth.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const dob = new Date(dobVal);
+        const now = new Date();
+        if (dob > now) {
+          out.textContent = "Date of birth cannot be in the future.";
+          out.classList.remove("hidden");
+          return;
+        }
+        let years = now.getFullYear() - dob.getFullYear();
+        let months = now.getMonth() - dob.getMonth();
+        let days = now.getDate() - dob.getDate();
+        if (days < 0) {
+          months -= 1;
+          const prevMonthDays = new Date(
+            now.getFullYear(),
+            now.getMonth(),
+            0
+          ).getDate();
+          days += prevMonthDays;
+        }
+        if (months < 0) {
+          years -= 1;
+          months += 12;
+        }
+        const res = `${years} years, ${months} months, ${days} days`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "age",
+          title: "Age",
+          result: res,
+          payload: { dob: dobVal },
+          date: new Date().toISOString(),
+        });
+      });
+
+      $("#gstCalcBtn").addEventListener("click", () => {
+        const amt = parseFloat($("#gstAmount").value);
+        const rate = parseFloat($("#gstRate").value);
+        const out = $("#gstResult");
+        if (isNaN(amt) || isNaN(rate)) {
+          out.textContent = "Please enter both amount and GST rate.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const tax = amt * (rate / 100);
+        const total = amt + tax;
+        const res = `GST: ₹${tax.toFixed(2)} — Total: ₹${total.toFixed(2)}`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "gst",
+          title: "GST",
+          result: res,
+          payload: { gstAmount: amt, gstRate: rate },
+          date: new Date().toISOString(),
+        });
+      });
+
+      const gradeMap = {
+        "A+": 4.0,
+        A: 4.0,
+        "A-": 3.7,
+        "B+": 3.3,
+        B: 3.0,
+        "B-": 2.7,
+        "C+": 2.3,
+        C: 2.0,
+        "C-": 1.7,
+        D: 1.0,
+        F: 0,
+      };
+      $("#gpaCalcBtn").addEventListener("click", () => {
+        const txt = $("#gpaInput").value.trim();
+        const out = $("#gpaResult");
+        if (!txt) {
+          out.textContent = "Enter grades and credits.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const parts = txt
+          .split(/[;\n]+/)
+          .map((s) => s.trim())
+          .filter(Boolean);
+        let totalPoints = 0,
+          totalCredits = 0;
+        const details = [];
+        for (const p of parts) {
+          const m = p
+            .split(/[,:\s]+/)
+            .map((x) => x.trim())
+            .filter(Boolean);
+          if (m.length < 2) continue;
+          const grade = m[0].toUpperCase();
+          const credit = parseFloat(m[1]);
+          if (isNaN(credit)) continue;
+          const gp = gradeMap[grade] ?? null;
+          if (gp === null) continue;
+          totalPoints += gp * credit;
+          totalCredits += credit;
+          details.push(`${grade}(${credit})`);
+        }
+        if (totalCredits === 0) {
+          out.textContent = "No valid grade-credit pairs found.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const gpa = totalPoints / totalCredits;
+        const res = `GPA: ${gpa.toFixed(2)} (Credits: ${totalCredits})`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong><div class="text-sm text-gray-600 mt-2">${details.join(
+          ", "
+        )}</div>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "gpa",
+          title: "GPA",
+          result: res,
+          payload: { gpaInput: txt },
+          date: new Date().toISOString(),
+        });
+      });
+
+      // New Calculators
+
+      // Percentage Calculator
+      $("#percentCalcBtn").addEventListener("click", () => {
+        const start = parseFloat($("#percentStart").value);
+        final = parseFloat($("#percentFinal").value);
+        const out = $("#percentResult");
+        if (isNaN(start) || isNaN(final)) {
+          out.textContent = "Please enter both starting and final values.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const increase = final - start;
+        const percentage = (increase / Math.abs(start)) * 100;
+        const res = `Change: ${increase >= 0 ? "+" : ""}${increase.toFixed(
+          2
+        )} (${percentage >= 0 ? "+" : ""}${percentage.toFixed(2)}%)`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "percentage",
+          title: "Percentage",
+          result: res,
+          payload: { percentStart: start, percentFinal: final },
+          date: new Date().toISOString(),
+        });
+      });
+
+      // Compound Interest Calculator
+      $("#compoundCalcBtn").addEventListener("click", () => {
+        const P = parseFloat($("#principalAmount").value);
+        const r = parseFloat($("#interestRate").value) / 100;
+        const t = parseFloat($("#timeYears").value);
+        const n = parseFloat($("#compoundFrequency").value);
+        const out = $("#compoundResult");
+        if (isNaN(P) || isNaN(r) || isNaN(t) || isNaN(n)) {
+          out.textContent = "Please enter all required values.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const A = P * Math.pow(1 + r / n, n * t);
+        const interest = A - P;
+        const res = `Final Amount: ₹${A.toFixed(
+          2
+        )} — Interest Earned: ₹${interest.toFixed(2)}`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "compound",
+          title: "Compound Interest",
+          result: res,
+          payload: {
+            principalAmount: P,
+            interestRate: r * 100,
+            timeYears: t,
+            compoundFrequency: n,
+          },
+          date: new Date().toISOString(),
+        });
+      });
+
+      // SEO ROI Calculator
+      $("#roiCalcBtn").addEventListener("click", () => {
+        const revenue = parseFloat($("#seoRevenue").value);
+        const costs = parseFloat($("#seoCosts").value);
+        const out = $("#roiResult");
+        if (isNaN(revenue) || isNaN(costs)) {
+          out.textContent = "Please enter both revenue and cost values.";
+          out.classList.remove("hidden");
+          return;
+        }
+        const roi = ((revenue - costs) / costs) * 100;
+        const profit = revenue - costs;
+        const res = `ROI: ${roi.toFixed(2)}% — ${
+          profit >= 0 ? "Profit" : "Loss"
+        }: ₹${Math.abs(profit).toFixed(2)}`;
+        out.innerHTML = `<strong class="text-lg">${res}</strong>`;
+        out.classList.remove("hidden");
+        addHistory({
+          tool: "roi",
+          title: "SEO ROI",
+          result: res,
+          payload: { seoRevenue: revenue, seoCosts: costs },
+          date: new Date().toISOString(),
+        });
+      });
+
+      // Initialize
+      document.getElementById("year").textContent = new Date().getFullYear();
+      renderHistory();
+
+      // Add loading animation to calculate buttons
+      $$('button[id$="CalcBtn"]').forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const originalText = this.innerHTML;
+          this.innerHTML =
+            '<i class="fas fa-spinner fa-spin mr-2"></i> Calculating...';
+          this.disabled = true;
+
+          setTimeout(() => {
+            this.innerHTML = originalText;
+            this.disabled = false;
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>

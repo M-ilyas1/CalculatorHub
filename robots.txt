@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://calculator.vgram.net/sitemap.xml
